@@ -17,11 +17,11 @@ def check_environment():
         print("   Run: echo 'GOOGLE_API_KEY=your_key' > .env")
         return False
     
-    # Check if GOOGLE_API_KEY is set
+    # Check if GOOGLE_API_KEY is set (google-genai also accepts GEMINI_API_KEY)
     from dotenv import load_dotenv
     load_dotenv()
     
-    api_key = os.getenv("GOOGLE_API_KEY")
+    api_key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
     if not api_key or api_key == "your_google_api_key_here":
         print("❌ GOOGLE_API_KEY not configured in .env")
         print("   Get key from: https://aistudio.google.com/apikey")
